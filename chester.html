@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="james.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <!-- Header Banner -->
+        <div class="banner">
+            <div>
+                <h3 class="banner-subtitle">Hi, There!</h3>
+				 <h1 class="banner-title"></h1>
+                <p class="banner-discription">Hello! My name is Chester James P. Morante , and I am an IT student. I have a passion for technology and a strong interest in exploring the fascinating world of information technology. As an IT student, I am constantly learning and expanding my knowledge in various areas of the field.</p>
+            </div>       
+            <div>
+                <img src="https://avatars.githubusercontent.com/u/156162784?s=400&u=1edc9064972941ea4497f8fe4d903ff8a62291cd&v=4" alt=""  width="600" height="600">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Information Section -->
+        <section class="about">
+            <h3 class="section-title">About Me</h3>
+            <p class="section-discription"> </p>
+            <div class="about-info-container">
+                <div class="about-info">
+                    <p class="info-title">Name:</p>
+                    <p class="info-description">Chester James P. Morante</p>
+                </div>
+                <div class="about-info">
+                    <p class="info-title">Email:</p>
+                    <p class="info-description">jamesmorante123@gmail.com</p>              
+                </div>
+                </div>
+                <div class="about-info">
+                    <p class="info-title">Experience:</p>
+                    <p class="info-description">⁃ Served as a network administrator, managing and troubleshooting a complex network infrastructure for a large organization.</p>
+                    <p class="info-description">⁃ Served as an IT project manager, overseeing the successful implementation of technology projects within budget and timeline constraints.</p>
+                    <p class="info-description">⁃ Worked as an IT consultant, providing strategic guidance to clients on technology adoption and digital transformation initiatives.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Do Section -->
+        <section class="what-i-do">
+            <h3 class="section-title">About Me:</h3>
+            <div class="skills-container">
+                <div class="skill">
+                    <img src="images/icons/js.png" alt="">
+                    <p class="skill-title">EDUCATION: Network Security for the Bachelor of Science in Information Technology program at the University of the Cordilleras (2022–2025)</p>
+                </div>
+                <div class="skill">
+                    <img src="images/icons/mongo.png" alt="">
+                    <p class="skill-title">INTEREST: Switching and Routing
+ ,Creating Websites, Tech Review of Computers,
+ Engaging in Video Games
+,Preparing Filipino Cuisine</p>          
+                </div>
+                <div class="skill">
+                    <img src="images/icons/nodejs.png" alt="">
+                    <p class="skill-title">OTHER INFORMATION_EMAIL: Jamesmorante123@gmail.com NUMBER: 09563258639 ADDRESS: 61 VILLALON ENGINEERS HILL BAGUIO CITY</p>  
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <div>
+                <h3 class="section-title">Let's Chat</h3>
+                <p class="section-discription">To reach me, please fill out the form in this area or phone between 9:00 a.m. and 8 p.m. ET, Monday to Friday. If there any concern just message me here 09563258639..</p>
+                <a href="">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2168/2168281.png" alt="">
+                </a>
+                <a href="">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1384/1384031.png" alt="">
+                </a>
+                <a href="">
+                    <img src="https://cdn-icons-png.flaticon.com/128/733/733635.png" alt="">
+                </a>
+            </div>
+            <div>
+                <h3 class="section-title">Message Me</h3>
+                <form action="" id="contactForm">
+                    <input type="text" name="name" id="nameInput" placeholder="Your Name">
+                    <input type="email" name="email" id="emailInput" placeholder="Your Email">
+                    <textarea name="message" id="messageInput" cols="30" rows="10"></textarea>
+                    <input class="btn-primary" type="button" value="Submit" placeholder="Message" onclick="submitForm()">
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const bannerTitle = document.querySelector('.banner-title');
+        const infoDescription = document.querySelectorAll('.info-description');
+        const skillTitle = document.querySelectorAll('.skill-title');
+
+        const texts = [
+            'Chester James P. Morante',
+            'jamesmorante123@gmail.com'
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < texts[textIndex].length) {
+                if (textIndex === 0) {
+                    bannerTitle.textContent += texts[textIndex][charIndex];
+                } else if (textIndex === 1) {
+            
+            bannerTitle.textContent = 'Chester James P. Morante';
+                } else {
+                    infoDescription[textIndex - 1].textContent += texts[textIndex][charIndex];
+                }
+                charIndex++;
+                setTimeout(typeText, 100);
+            } else {
+                textIndex++;
+                charIndex = 0;
+                if (textIndex < texts.length) {
+                    setTimeout(typeText, 500);
+                }
+            }
+        }
+
+        function typeSkillTitles() {
+            if (charIndex < texts[2].length) {
+                skillTitle.forEach((title) => {
+                    title.textContent += texts[2][charIndex];
+                });
+                charIndex++;
+                setTimeout(typeSkillTitles, 100);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            typeText();
+            setTimeout(typeSkillTitles, 2000);
+        });
+
+        function submitForm() {
+            // Get form input values
+            var name = document.getElementById("nameInput").value;
+            var email = document.getElementById("emailInput").value;
+            var message = document.getElementById("messageInput").value;
+
+            // Perform form validation
+            if (name === "" || email === "" || message === "") {
+                alert("Please fill out all fields before submitting.");
+                return;
+            }
+
+            // Perform form submission (you can customize this part)
+            alert("Form submitted successfully!");
+            document.getElementById("contactForm").reset();
+        }
+    </script>
+
+</body>
+</
